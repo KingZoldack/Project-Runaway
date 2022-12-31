@@ -139,15 +139,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void CantClick()
-    {
-        _canClick = false;
-    }
+    public void CantClick() => _canClick = false;
 
-    public void CanClick() 
-    {
-        _canClick= true;
-    }
+    public void CanClick() => _canClick= true;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

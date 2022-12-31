@@ -22,9 +22,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
     private void Awake()
     {
         if (Instance == null)
-        {
             Instance = this;
-        }
 
         InitializeAds();
 
@@ -54,11 +52,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
     }
 
     // Load content to the Ad Unit:
-    public void LoadAd()
-    {
-        // IMPORTANT! Only load content AFTER initialization
-        Advertisement.Load(_adUnitID, this);
-    }
+    public void LoadAd() => Advertisement.Load(_adUnitID, this); // IMPORTANT! Only load content AFTER initialization
 
     // If the ad successfully loads, add a listener to the button and enable it:
     public void OnUnityAdsAdLoaded(string adUnitID)
@@ -66,7 +60,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
         if (adUnitID.Equals(_adUnitID))
         {
             // Configure the button to call the ShowAd() method when clicked:
-            //_adButton.onClick.AddListener(ShowRewardedAd); Grants multiple rewards keep disabled
+            //_adButton.onClick.AddListener(ShowRewardedAd); -Grants multiple rewards keep disabled
 
             // Enable the button for users to click:
             _adButton.interactable = true;
@@ -85,20 +79,11 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
         GameManager.Instance.TogglePause();
     }
 
-    public void DisableAdsButton()
-    {
-        _adButton.interactable = false;
-    }
+    public void DisableAdsButton() => _adButton.interactable = false;
 
-    public void EnableAdsButton()
-    {
-        _adButton.interactable = true;
-    }
+    public void EnableAdsButton() => _adButton.interactable = true;
 
-    public void ResetAdsCount()
-    {
-        _adsShowCount = 3;
-    }
+    public void ResetAdsCount() => _adsShowCount = 3;
 
     public void OnUnityAdsShowComplete(string adUnitID, UnityAdsShowCompletionState showCompletionState)
     {
@@ -129,11 +114,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsInitializationListener, IUnity
 
     public void OnUnityAdsShowClick(string placementId) { }
 
-    void OnDestroy()
-    {
-        // Clean up the button listeners:
-        _adButton.onClick.RemoveAllListeners();
-    }
+    void OnDestroy() => _adButton.onClick.RemoveAllListeners(); // Clean up the button listeners:
 
     public void OnInitializationComplete() { }
 

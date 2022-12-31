@@ -68,15 +68,10 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         if (Instance == null)
-        {
             Instance = this;
-        }
     }
 
-    void Start()
-    {
-        _originalCamPos = Camera.main.transform.position;
-    }
+    void Start() => _originalCamPos = Camera.main.transform.position;
 
     public void StartGame()
     {
@@ -115,10 +110,7 @@ public class GameManager : MonoBehaviour
         DisplayScore();
     }
 
-    public bool isGameOver()
-    {
-        return _isGameOver;
-    }
+    public bool isGameOver() => _isGameOver;
 
     public void IncreaseLife()
     {
@@ -137,10 +129,7 @@ public class GameManager : MonoBehaviour
         DisplayLives();
     }
 
-    void DisplayLives()
-    {
-        _livesText.text = "Extra Lives: " + _playerLives;
-    }
+    void DisplayLives() => _livesText.text = "Extra Lives: " + _playerLives;
 
     public void UpdateScore()
     {
@@ -153,20 +142,11 @@ public class GameManager : MonoBehaviour
         DisplayScore();
     }
 
-    void DisplayScore()
-    {
-        _scoreText.text = "Score: " + _score;
-    }
+    void DisplayScore() => _scoreText.text = "Score: " + _score;
 
-    public void QuitGame()
-    {
-        Application.Quit();
-    }
+    public void QuitGame() => Application.Quit();
 
-    public void Shake()
-    {
-        StartCoroutine(CameraShakeRoutine());
-    }
+    public void Shake() => StartCoroutine(CameraShakeRoutine());
 
     IEnumerator CameraShakeRoutine() 
     {
@@ -182,10 +162,7 @@ public class GameManager : MonoBehaviour
         Camera.main.transform.position = _originalCamPos;
     }
 
-    public bool IsMainMenu()
-    {
-        return _isMainMenu;
-    }
+    public bool IsMainMenu() => _isMainMenu;
 
     public void TogglePause()
     {
@@ -207,13 +184,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public bool CanSpawn()
-    {
-        return _canSpawn;
-    }
+    public bool CanSpawn() => _canSpawn;
 
-    public void CantSpawn()
-    {
-        _canSpawn = false;
-    }
+    public void CantSpawn() => _canSpawn = false;
 }

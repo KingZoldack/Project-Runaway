@@ -13,10 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField]
     float _enemyPosLimit = -11f;
 
-    void Update()
-    {
-        DestroyEnemy();
-    }
+    void Update() => DestroyEnemy();
 
     void FixedUpdate()
     {
@@ -27,10 +24,7 @@ public class Enemy : MonoBehaviour
             transform.position += Vector3.zero;
     }
 
-    void Move()
-    {
-        transform.position += Vector3.left * _moveSpeed * Time.deltaTime;
-    }
+    void Move() => transform.position += Vector3.left * _moveSpeed * Time.deltaTime;
 
     void DestroyEnemy()
     {

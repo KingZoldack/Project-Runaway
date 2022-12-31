@@ -59,12 +59,7 @@ public class AudioManager : MonoBehaviour
     void Awake()
     {
         if (Instance == null)
-        {
             Instance = this;
-            GameObject.DontDestroyOnLoad(gameObject);
-        }
-        else
-            Destroy(gameObject);
     }
 
     // Update is called once per frame
@@ -85,6 +80,7 @@ public class AudioManager : MonoBehaviour
 
             if (_audioSource.volume <= 0)
                 _audioSource.volume = 0;
+
             else
                 _audioSource.volume = _mainMenuAudioVolume;
 
@@ -107,6 +103,7 @@ public class AudioManager : MonoBehaviour
 
                 if (_audioSource.volume <= 0)
                     _audioSource.volume = 0;
+
                 else
                     _audioSource.volume = _mainGameAudioVolume;
 
@@ -119,15 +116,9 @@ public class AudioManager : MonoBehaviour
             _audioSource.Stop();
         }
     }
-    public void PlayHurtSound()
-    {
-        _audioSource.PlayOneShot(_hurtAudio, _hurtAudioVolume);
-    }
+    public void PlayHurtSound() => _audioSource.PlayOneShot(_hurtAudio, _hurtAudioVolume);
 
-    public void PlaySwishSound()
-    {
-        _audioSource.PlayOneShot(_swishAudio, _swishAudioVolume);
-    }
+    public void PlaySwishSound() => _audioSource.PlayOneShot(_swishAudio, _swishAudioVolume);
 
     public void PauseMusic()
     {
@@ -141,20 +132,11 @@ public class AudioManager : MonoBehaviour
             _audioSource.UnPause();
     }
 
-    public void PauseAudio()
-    {
-        _isPaused = true;
-    }
+    public void PauseAudio() => _isPaused = true;
 
-    public void ResumeAudio()
-    {
-        _isPaused = false;
-    }
+    public void ResumeAudio() => _isPaused = false;
 
-    public bool IsPaused()
-    {
-        return _isPaused;
-    }
+    public bool IsPaused() => _isPaused;
 
     public void ToggleMute()
     {
