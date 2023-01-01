@@ -59,6 +59,7 @@ public class Player : MonoBehaviour
     {
         HandleDoubleTap();
         HandleRunParticles();
+        HandlePlayerAnimation();
     }
 
     void HandleDoubleTap()
@@ -139,26 +140,30 @@ public class Player : MonoBehaviour
         }
     }
 
+    void HandlePlayerAnimation()
+    {
+        if (!GameManager.Instance.isGameOver())
+            AnimatorManager.Instance.ChangeAnimationState(Tags.Instance.PlayerMovementAnimation);
+
+        else if (GameManager.Instance.isGameOver() && !GameManager.Instance.IsMainMenu())
+            AnimatorManager.Instance.ChangeAnimationState(Tags.Instance.PlayerDeathAnimation);
+    }
+
     public void CantClick() => _canClick = false;
 
-    public void CanClick() => _canClick= true;
+    public void CanClick() => _canClick = true;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == _tags.EnemyTag)
         {
             Destroy(collision.gameObject);
-            _animator.SetBool(_tags.HurtAnimation, true);
-            StartCoroutine(StopHurtAnimationRoutine());
+            //StartCoroutine(StopHurtAnimationRoutine());
             GameManager.Instance.UpdateLives();
             GameManager.Instance.Shake();
             AudioManager.Instance.PlayHurtSound();
+            AnimatorManager.Instance.ChangeAnimationState(Tags.Instance.PlayerHurtAnimation);
+            //StartCoroutine(PlayRunAnimationRoutine());
         }
-    }
-
-    IEnumerator StopHurtAnimationRoutine()
-    {
-        yield return new WaitForSeconds(0.5f);
-        _animator.SetBool(_tags.HurtAnimation, false);
     }
 }

@@ -4,24 +4,27 @@ public class Tags : MonoBehaviour
 {
     public static Tags Instance { get; private set; }
 
-    [Header("Tags and Animation References:")]
+    [Header("Tags")]
     [Tooltip("Player tag reference.")]
     [SerializeField]
     string _playerTag = "Player";
     [Tooltip("Enemy tag reference.")]
     [SerializeField]
     string _enemyTag = "Enemy";
-    [Tooltip("Main scene name reference.")]
-    [SerializeField]
-    string _mainScene = "Game";
-    [Tooltip("Run animation boolean reference.")]
-    [SerializeField]
-    string _runAnimation = "hasGameStarted";
-    [Tooltip("Hurt animation boolean reference.")]
-    [SerializeField]
-    string _hurtAnimation = "gotHurt";
 
-    [Header("Ads String References:")]
+    [Header("Animation States")]
+    [Tooltip("Player movement animation reference.")]
+    [SerializeField]
+    string _playerMovementAnimation = "player_movement_anim";
+    [Tooltip("Player hurt animation reference.")]
+    [SerializeField]
+    string _playerHurtAnimation = "player_hurt_anim";
+    [Tooltip("Player death animation reference")]
+    [SerializeField]
+    string _playerDeathAnimation = "player_death_anim";
+
+
+    [Header("Ads String References")]
     [Tooltip("Android ID reference.")]
     [SerializeField]
     string _androidGameID = "5094765";
@@ -38,9 +41,9 @@ public class Tags : MonoBehaviour
     //Properties
     public string PlayerTag { get { return _playerTag; } }
     public string EnemyTag { get { return _enemyTag; } }
-    public string MainScene { get { return _mainScene; } }
-    public string RunAnimation { get { return _runAnimation; } }
-    public string HurtAnimation { get { return _hurtAnimation; } }
+    public string PlayerMovementAnimation { get { return _playerMovementAnimation; } }
+    public string PlayerHurtAnimation { get { return _playerHurtAnimation; } }
+    public string PlayerDeathAnimation { get { return _playerDeathAnimation; } }
     public string AndroidGameID { get { return _androidGameID; } }
     public string IOSGameID { get { return _iosGameID; } }
     public string AndroidRewardedAdUnitID { get { return _androidRewardedAdUnitID; } }

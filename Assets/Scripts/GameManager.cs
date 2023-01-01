@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     Animator _playerAnimator;
     [Tooltip("Set the number of lives for the player.")]
     [SerializeField]
-    int _playerLives = 3;
+    int _playerLives = 2;
 
     [Header("UI Text")]
     [Tooltip("Lives text.")]
@@ -84,7 +84,6 @@ public class GameManager : MonoBehaviour
             _mainGameUI.SetActive(true);
             _spawnManager.SetActive(true);
             _player.CanClick();
-            _playerAnimator.SetBool(Tags.Instance.RunAnimation, true);
             AdsManager.Instance.EnableAdsButton();
             AdsManager.Instance.ResetAdsCount();
         }   
@@ -94,9 +93,9 @@ public class GameManager : MonoBehaviour
     {
         _isGameOver = true;
         _player.CantClick();
-        _playerAnimator.SetBool(Tags.Instance.RunAnimation, false);
         _gameOverPanel.SetActive(true);
         AdsManager.Instance.DisableAdsButton();
+        AnimatorManager.Instance.ChangeAnimationState(Tags.Instance.PlayerDeathAnimation);
     }
 
     public void RestartLevel()
