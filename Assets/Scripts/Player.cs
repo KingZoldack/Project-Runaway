@@ -158,12 +158,10 @@ public class Player : MonoBehaviour
         if (collision.tag == _tags.EnemyTag)
         {
             Destroy(collision.gameObject);
-            //StartCoroutine(StopHurtAnimationRoutine());
             GameManager.Instance.UpdateLives();
             GameManager.Instance.Shake();
             AudioManager.Instance.PlayHurtSound();
             AnimatorManager.Instance.ChangeAnimationState(Tags.Instance.PlayerHurtAnimation);
-            //StartCoroutine(PlayRunAnimationRoutine());
         }
     }
 }

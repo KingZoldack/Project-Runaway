@@ -95,17 +95,16 @@ public class GameManager : MonoBehaviour
         _player.CantClick();
         _gameOverPanel.SetActive(true);
         AdsManager.Instance.DisableAdsButton();
-        AnimatorManager.Instance.ChangeAnimationState(Tags.Instance.PlayerDeathAnimation);
     }
 
     public void RestartLevel()
     {
-        StartGame();
         _canSpawn = true;
-        _gameOverPanel.SetActive(false);
         _playerLives = 2;
-        DisplayLives();
         _score = 0;
+        _gameOverPanel.SetActive(false);
+        StartGame();
+        DisplayLives();
         DisplayScore();
     }
 
